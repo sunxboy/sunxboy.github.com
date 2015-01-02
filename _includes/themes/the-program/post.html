@@ -14,7 +14,7 @@
 					{{ content }}
 					<div class="meta">
 						<p class="date-publish">
-							Published: 
+							发布: 
 							<date class="date-pub" title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}" pubdate>
 							<span class="month"><abbr>{{ page.date | date: '%B' }}</abbr></span>
 							<span class="day">{{ page.date | date: '%d' }}</span>
@@ -22,7 +22,7 @@
 							</date>
 						</p>
 						<ul class="list-category list-linear">
-							<li class="list-head">category: </li>
+							<li class="list-head">分类: </li>
 							{% assign categories_list = page.categories %}
 							{% include JB/categories_list %}
 						</ul>
@@ -61,7 +61,7 @@
 						</ul>
 					</nav>
 					<p class="gotop">
-						<a href="#page">Back to Top</a>
+						<a href="#page">回到页面顶端</a>
 					</p>
 				</div>
 			</footer>

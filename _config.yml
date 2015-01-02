@@ -5,19 +5,19 @@ permalink: /:categories/:year/:month/:day/:title
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: pygments
 markdown: rdiscount
-#highlighter: rouge
+#highlighter: rouge 
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
+title : Hello World1
 tagline: Site Tagline
 author :
-  name : Beam Sun
+  name : Beam.Sun
   email : sunxboy@gmail.com
   github : sunxboy
-  twitter : sunxboy
-  feedburner : sunxboy
+  twitter : 
+  feedburner : http://www.sunxboy.com/
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
@@ -84,15 +84,15 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : sunxboy
     livefyre :
-      site_id : 123
+      site_id : sunxboy
     intensedebate :
-      account : 123abc
+      account : sunxboy
     facebook :
-      appid : 123
-      num_posts: 5
-      width: 580
+      appid : 
+      num_posts: 
+      width: 
       colorscheme: light
    
   # Settings for analytics helper
@@ -104,11 +104,11 @@ JB :
     google : 
         tracking_id : 'UA-12395343-1'
     getclicky :
-      site_id : 
+      site_id : 100804162
     mixpanel :
-        token : '_MIXPANEL_TOKEN_'
+        token : '9dfa0d057e69eaf9b1b493b4b8a1a2be'
     piwik :
-        baseURL : 'myserver.tld/piwik' # Piwik installation address (without protocol)
+        baseURL : 'sunxboy.com/piwik' # Piwik installation address (without protocol)
         idsite : '1'                   # the id of the site on Piwik
 
   # Settings for sharing helper. 
