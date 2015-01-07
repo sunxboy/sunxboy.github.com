@@ -7,5 +7,5 @@ tags: [project]
 ---
 {% include JB/setup %}
 
-<img style="display: block; margin:auto;" src="/assets/images/chinese-project-process/chinese-project-process.jpg">
+<img class="img-center" src="/assets/images/chinese-project-process/chinese-project-process.jpg">
 <!--break-->

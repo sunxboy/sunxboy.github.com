@@ -1482,3 +1482,20 @@ hr {
   *display: inline;
   float: right;
 }
+
+.img-left {
+  *display: inline;
+  float: left;
+  margin: 5px 15px 5px 5px;
+}
+
+.img-right {
+  *display: inline;
+  float: right;
+  margin: 5px 5px 5px 15px;
+}
+
+.img-center {
+  display: block;
+  margin: auto;
+}
