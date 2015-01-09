@@ -352,3 +352,110 @@ Go 自动处理方法调用时的值和指针之间的转化。你可以使用�
 
 ###`接口`是方法特征的命名集合
 
+这里是一个几何体的基本接口
+
+	type geometry interface {
+	    area() float64
+	    perim() float64
+	}
+
+在我们的例子中，我们将让 square 和 circle 实现这个接口
+
+	type square struct {
+	    width, height float64
+	}
+	type circle struct {
+	    radius float64
+	}
+
+要在 Go 中实现一个接口，我们只需要实现接口中的所有方法。这里我们让 square 实现了 geometry 接口。
+
+	func (s square) area() float64 {
+	    return s.width * s.height
+	}
+	func (s square) perim() float64 {
+	    return 2*s.width + 2*s.height
+	}
+
+circle 的实现
+	
+	func (c circle) area() float64 {
+	    return math.Pi * c.radius * c.radius
+	}
+	func (c circle) perim() float64 {
+	    return 2 * math.Pi * c.radius
+	}
+
+如果一个变量的是接口类型，那么我们可以调用这个被命名的接口中的方法。这里有一个一通用的 measure 函数，利用这个特性，它可以用在任何 geometry 上。
+	
+	func measure(g geometry) {
+	    fmt.Println(g)
+	    fmt.Println(g.area())
+	    fmt.Println(g.perim())
+	}
+
+结构体类型 circle 和 square 都实现了 geometry接口，所以我们可以使用它们的实例作为 measure 的参数。
+
+	s := square{width: 3, height: 4}
+	c := circle{radius: 5}	
+	measure(s)
+	measure(c)
+
+---
+Go 语言使用一个独立的·明确的返回值来传递错误信息的。这与使用异常的 Java 和 Ruby 以及在 C 语言中经常见到的超重的单返回值/错误值相比，Go 语言的处理方式能清楚的知道哪个函数返回了错误，并能想调用那些没有出错的函数一样调用。
+
+	func f1(arg int) (int, error) {
+	    if arg == 42 {
+			return -1, errors.New("can't work with 42")
+		}
+	 	return arg + 3, nil
+	}
+
+>* 按照惯例，错误通常是最后一个返回值并且是 error 类型，一个内建的接口。
+>* errors.New 构造一个使用给定的错误信息的基本error 值。
+>* 返回错误值为 nil 代表没有错误。
+
+通过实现 Error 方法来自定义 error 类型是可以得。这里使用自定义错误类型来表示上面的参数错误
+	
+	type argError struct {
+	    arg  int
+	    prob string
+	}
+	func (e *argError) Error() string {
+	    return fmt.Sprintf("%d - %s", e.arg, e.prob)
+	}
+
+	func f2(arg int) (int, error) {
+	    if arg == 42 {
+			return -1, &argError{arg, "can't work with it"}
+	    }
+	    return arg + 3, nil
+	}
+
+在这个例子中，我们使用 &argError 语法来建立一个新的结构体，并提供了 arg 和 prob 这个两个字段的值。
+
+
+下面的两个循环测试了各个返回错误的函数。注意在 if行内的错误检查代码，在 Go 中是一个普遍的用法。
+
+	for _, i := range []int{7, 42} {
+        if r, e := f1(i); e != nil {
+            fmt.Println("f1 failed:", e)
+        } else {
+            fmt.Println("f1 worked:", r)
+        }
+    }
+    for _, i := range []int{7, 42} {
+        if r, e := f2(i); e != nil {
+            fmt.Println("f2 failed:", e)
+        } else {
+            fmt.Println("f2 worked:", r)
+        }
+    }
+
+你如果想在程序中使用一个自定义错误类型中的数据，你需要通过类型断言来得到这个错误类型的实例。
+
+	 _, e := f2(42)
+    if ae, ok := e.(*argError); ok {
+        fmt.Println(ae.arg)
+        fmt.Println(ae.prob)
+    }
