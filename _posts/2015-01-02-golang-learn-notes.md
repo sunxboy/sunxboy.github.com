@@ -459,3 +459,82 @@ Go 语言使用一个独立的·明确的返回值来传递错误信息的。这
         fmt.Println(ae.arg)
         fmt.Println(ae.prob)
     }
+
+###Go 协程 在执行上来说是轻量级的线程
+	
+	func f(from string) {
+	    for i := 0; i < 3; i++ {
+	        fmt.Println(from, ":", i)
+	    }
+	}
+
+假设我们有一个函数叫做 f(s)。我们使用一般的方式调并同时运行。
+使用 go f(s) 在一个 Go 协程中调用这个函数。这个新的 Go 协程将会并行的执行这个函数调用。
+
+	go f("goroutine")
+
+你也可以为匿名函数启动一个 Go 协程。
+
+	go func(msg string) {
+        fmt.Println(msg)
+    }("going")
+
+现在这两个 Go 协程在独立的 Go 协程中异步的运行，所以我们需要等它们执行结束。这里的 Scanln 代码需要我们在程序退出前按下任意键结束。
+
+	var input string
+    fmt.Scanln(&input)
+    fmt.Println("done")
+
+output:
+
+	goroutine : 0
+	going
+	goroutine : 1
+	goroutine : 2
+	<enter>
+	done
+
+将首先看到两个 Go 协程的交替输出。这种交替的情况表示 Go 运行时是以异步的方式运行协程的。
+
+---
+
+
+`通道`是连接多个 Go 协程的管道。你可以从一个 Go 协程将值发送到通道，然后在别的 Go 协程中接收。
+
+使用 `make(chan val-type)` 创建一个新的通道。通道类型就是他们需要传递值的类型。
+
+	messages := make(chan string)
+
+使用 `channel <-` 语法 发送 一个新的值到通道中。这里我们在一个新的 Go 协程中发送 `"ping"` 到上面创建的messages 通道中。
+
+	go func() { messages <- "ping" }()
+
+
+使用 <-channel 语法从通道中 接收 一个值。这里将接收我们在上面发送的 "ping" 消息并打印出来。
+
+	msg := <-messages
+    fmt.Println(msg)
+
+我们运行程序时，通过通道，消息 "ping" 成功的从一个 Go 协程传到另一个中。
+
+	$ go run channels.go
+	ping
+
+默认发送和接收操作是阻塞的，直到发送方和接收方都准备完毕。这个特性允许我们，不使用任何其它的同步操作，来在程序结尾等待消息 `"ping"`。
+
+###通道缓冲
+
+默认通道是 `无缓冲` 的，这意味着只有在对应的接收`（<- chan）`通道准备好接收时，才允许进行发送`（chan <-）`。可缓存通道允许在没有对应接收方的情况下，缓存限定数量的值。
+
+这里我们 make 了一个通道，最多允许缓存 2 个值。
+
+ 	messages := make(chan string, 2)
+
+因为这个通道是有缓冲区的，即使没有一个对应的并发接收方，我们仍然可以发送这些值。然后我们可以像前面一样接收这两个值
+
+	messages <- "buffered"
+    messages <- "channel"
+	fmt.Println(<-messages)
+    fmt.Println(<-messages)
+
+###通道同步 ==>
