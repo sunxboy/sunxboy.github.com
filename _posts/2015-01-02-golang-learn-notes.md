@@ -537,4 +537,86 @@ output:
 	fmt.Println(<-messages)
     fmt.Println(<-messages)
 
-###通道同步 ==>
+###通道同步
+
+我们可以使用通道来同步 Go 协程间的执行状态。这里是一个使用阻塞的接受方式来等待一个 Go 协程的运行结束。
+		
+	func worker(done chan bool) {
+	    fmt.Print("working...")
+	    time.Sleep(time.Second)
+	    fmt.Println("done")
+		done <- true
+	}
+
+这是一个我们将要在 Go 协程中运行的函数。done 通道将被用于通知其他 Go 协程这个函数已经工作完毕。
+
+运行一个 worker Go协程，并给予用于通知的通道。
+程序将在接收到通道中 worker 发出的通知前一直阻塞。
+
+	done := make(chan bool, 1)
+	go worker(done)
+	<-done
+
+如果你把 `<- done` 这行代码从程序中移除，程序甚至会在 worker还没开始运行时就结束了。
+
+###通道方向
+当使用通道作为函数的参数时，你可以指定这个通道是不是只用来发送或者接收值。这个特性提升了程序的类型安全性。
+
+	func ping(pings chan<- string, msg string) {
+	    pings <- msg
+	}
+
+ping 函数定义了一个只允许发送数据的通道。尝试使用这个通道来接收数据将会得到一个编译时错误。
+	
+	func pong(pings <-chan string, pongs chan<- string) {
+	    msg := <-pings
+	    pongs <- msg
+	}
+
+pong 函数允许通道（pings）来接收数据，另一通道（pongs）来发送数据。
+
+	pings := make(chan string, 1)
+    pongs := make(chan string, 1)
+    ping(pings, "passed message")
+    pong(pings, pongs)
+    fmt.Println(<-pongs)
+
+###通道选择器
+Go 的通道选择器 让你可以同时等待多个通道操作。Go 协程和通道以及选择器的结合是 Go 的一个强大特性。
+
+在我们的例子中，我们将从两个通道中选择。
+
+	c1 := make(chan string)
+    c2 := make(chan string)
+
+各个通道将在若干时间后接收一个值，这个用来模拟例如并行的 Go 协程中阻塞的 RPC 操作
+
+	go func() {
+        time.Sleep(time.Second * 1)
+        c1 <- "one"
+    }()
+    go func() {
+        time.Sleep(time.Second * 2)
+        c2 <- "two"
+    }()
+
+我们使用 select 关键字来同时等待这两个值，并打印各自接收到的值。
+
+	for i := 0; i < 2; i++ {
+        select {
+        case msg1 := <-c1:
+            fmt.Println("received", msg1)
+        case msg2 := <-c2:
+            fmt.Println("received", msg2)
+        }
+    }
+
+我们首先接收到值 "one"，然后就是预料中的 "two"了。
+
+	$ time go run select.go 
+	received one
+	received two
+
+注意从第一次和第二次 Sleeps 并发执行，总共仅运行了两秒左右。
+
+	real	0m2.245s
