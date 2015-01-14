@@ -661,3 +661,78 @@ Go 的通道选择器 让你可以同时等待多个通道操作。Go 协程和�
 使用这个 `select` 超时方式，需要使用通道传递结果。这对于一般情况是个好的方式，因为其他重要的 Go 特性是基于通道和select 的。接下来我们就要看到两个例子：`timer` 和`ticker`。
 
 ###非阻塞通道操作
+
+常规的通过通道发送和接收数据是阻塞的。然而，我们可以使用带一个 default 子句的 `select` 来实现非阻塞 的发送、接收，甚至是非阻塞的多路 `select`。
+
+这里是一个非阻塞接收的例子。如果在 messages 中存在，然后 `select` 将这个值带入 `<-messages case`中。如果不是，就直接到 default 分支中。
+
+ 	messages := make(chan string)
+    signals := make(chan bool)
+	select {
+    case msg := <-messages:
+        fmt.Println("received message", msg)
+    default:
+        fmt.Println("no message received")
+    }
+
+一个非阻塞发送的实现方法和上面一样。
+
+	msg := "hi"
+    select {
+    case messages <- msg:
+        fmt.Println("sent message", msg)
+    default:
+        fmt.Println("no message sent")
+    }	
+
+我们可以在 default 前使用多个 case 子句来实现一个多路的非阻塞的选择器。这里我们视图在 messages和 signals 上同时使用非阻塞的接受操作。
+
+	select {
+    case msg := <-messages:
+        fmt.Println("received message", msg)
+    case sig := <-signals:
+        fmt.Println("received signal", sig)
+    default:
+        fmt.Println("no activity")
+    }
+
+###通道的关闭
+
+`关闭` 一个通道意味着不能再向这个通道发送值了。这个特性可以用来给这个通道的`接收方`传达工作已将完成的信息。
+
+	jobs := make(chan int, 5)
+    done := make(chan bool)
+
+在这个例子中，我们将使用一个 jobs 通道来传递 main() 中 Go协程任务执行的结束信息到一个工作 Go 协程中。当我们没有多余的任务给这个工作 Go 协程时，我们将 `close` 这个 jobs 通道。
+
+---
+
+ 	go func() {
+        for {
+            j, more := <-jobs
+            if more {
+                fmt.Println("received job", j)
+            } else {
+                fmt.Println("received all jobs")
+                done <- true
+                return
+            }
+        }
+    }()
+
+这是工作 Go 协程。使用 j, more := <- jobs 循环的从jobs 接收数据。在接收的这个特殊的二值形式的值中，如果 jobs 已经关闭了，并且通道中所有的值都已经接收完毕，那么 more 的值将是 false。当我们完成所有的任务时，将使用这个特性通过 done 通道去进行通知。
+
+---
+
+ 	for j := 1; j <= 3; j++ {
+        jobs <- j
+        fmt.Println("sent job", j)
+    }
+    close(jobs)
+    fmt.Println("sent all jobs")
+
+	<-done
+
+这里使用 jobs 发送 3 个任务到工作函数中，然后关闭 jobs。
+
+`<-done` 我们使用前面学到的通道同步方法等待任务结束
