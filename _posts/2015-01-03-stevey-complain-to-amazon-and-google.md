@@ -2,10 +2,10 @@
 layout: post
 title: "SteveY的吐槽"
 description: "SteveY对Amazon和Google平台的吐槽"
-category:
-tags: [SOA]
+category: 吐槽
+tags: [Amazon, google]
 ---
-{% include JB/setup %}
+
 
 Read [SteveY对Amazon和Google平台的吐槽](http://coolshell.cn/articles/5701.html)
 

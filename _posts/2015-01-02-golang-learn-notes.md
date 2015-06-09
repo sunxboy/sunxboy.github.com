@@ -2,10 +2,9 @@
 layout: post
 title: "GoLang 学习笔记"
 description: "golang study"
-category: golang
-tags: [golang, learn]
+category: 技术
+tags: [golang]
 ---
-{% include JB/setup %}
 
 Read [Go by Example 中文](http://everyx.in/gobyexample/)
 

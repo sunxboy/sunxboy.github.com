@@ -2,10 +2,10 @@
 layout: post
 title: "DevOps的规则"
 description: "DevOps running rules, good experience"
-category: 
-tags: [experience]
+category: 技术
+tags: [devops]
 ---
-{% include JB/setup %}
+
 
 `Web应用就像餐馆一样`，人们通过其所提供的体验对其进行评价。即使是短暂的中断也会影响服务提供商的口碑或服务水平。**政策和指导方针在防止代价高昂的服务中断中扮演着重要的角色**。不幸的是，它们也能导致不理智决策的产生，从而造成更大的损害。比如公司内“DevOps团队”的建立。**这将导致所有的运维知识都被隔离在一个单独的团队中**。尽管这样一个管理层指令可能预示着DevOps的到来，但它什么都不是。
 
