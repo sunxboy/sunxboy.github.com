@@ -11,7 +11,7 @@ Read [Go by Example 中文](http://everyx.in/gobyexample/)
     f:=”short”
 `:= `语句是申明并初始化变量的简写，例如这个例子中的 `var f string = “short”`
 
-####`const` 用于声明一个常量
+## `const` 用于声明一个常量
 
     fmt.Println(int64(d))
 数值型常量是没有确定的类型的，直到它们被给定了一个类型，比如说一次显示的类型转化
@@ -21,7 +21,7 @@ Read [Go by Example 中文](http://everyx.in/gobyexample/)
 
 <!--break-->
 
-####`for` 是 Go 中唯一的循环结构
+## `for` 是 Go 中唯一的循环结构
 最常用的方式，带单个循环条件。
   
     i:=1
@@ -53,7 +53,7 @@ Read [Go by Example 中文](http://everyx.in/gobyexample/)
 	  fmt.Println(num,”has multiple digits”)
 	}
 
-**switch**
+## switch的用法
 
 在一个 `case` 语句中，你可以使用逗号来分隔多个表达式。在这个例子中，我们很好的使用了可选的default 分支。
 
@@ -75,7 +75,7 @@ Read [Go by Example 中文](http://everyx.in/gobyexample/)
         fmt.Println(“it’s after noon”)
     }
 	
-###数组
+## 数组
 
     var a[5] int
     a[4]=100
@@ -130,7 +130,7 @@ Read [Go by Example 中文](http://everyx.in/gobyexample/)
 我们可以在一行代码中申明并初始化一个 `slice` 变量。
 	
 
-###关联数组 map
+## 关联数组 map
 要创建一个空 `map`，需要使用内建的 make:make(map[key-type]val-type).
     m:= make(map[string]int)
 
@@ -148,7 +148,7 @@ Read [Go by Example 中文](http://everyx.in/gobyexample/)
     n := map[string]int{"foo": 1, "bar": 2}
 
 
-###Range 遍历
+## Range 遍历
 range 来统计一个 slice 的元素个数。数组也可以采用这种方法。
 
     for _, num := range nums {
@@ -176,8 +176,7 @@ range 在字符串中迭代 unicode 编码。第一个返回值是rune 的起始
         fmt.Println(i, c)
     }
 
-<br>
-### 函数
+## 函数
 
 Go 需要明确的返回值，例如，它不会自动返回最后一个表达式的值
 
@@ -189,7 +188,7 @@ Go 需要明确的返回值，例如，它不会自动返回最后一个表达�
     
 	res := plus(1, 2)
 
-**函数多返回值**
+## 函数多返回值
 
 (int, int) 在这个函数中标志着这个函数返回 2 个 int
 	
@@ -206,7 +205,7 @@ Go 需要明确的返回值，例如，它不会自动返回最后一个表达�
 	_, c := vals()
     fmt.Println(c)
 
-**可变参数函数**
+## 可变参数函数
 
 这个函数使用任意数目的 int 作为参数:
 
@@ -224,8 +223,8 @@ Go 需要明确的返回值，例如，它不会自动返回最后一个表达�
 	nums := []int{1, 2, 3, 4}
     sum(nums...)
 
-<br>
-###闭包 匿名函数
+
+## 闭包 匿名函数
 这个 `intSeq` 函数返回另一个在 `intSeq` 函数体内定义的匿名函数。这个返回的函数使用闭包的方式 隐藏 变量 i
 
 	func intSeq() func() int {
@@ -244,7 +243,7 @@ Go 需要明确的返回值，例如，它不会自动返回最后一个表达�
     fmt.Println(nextInt())
     fmt.Println(nextInt())
 
-###递归
+## 递归
 一个经典的阶乘示例
 
 	func fact(n int) int {
@@ -254,7 +253,7 @@ Go 需要明确的返回值，例如，它不会自动返回最后一个表达�
 	    return n * fact(n-1)
 	}
 
-###指针
+## 指针
 > 允许在程序中通过引用传递值或者数据结构
 
 通过`zeroval` 和 `zeroptr` 来比较指针和值类型的不同
@@ -277,8 +276,8 @@ Go 需要明确的返回值，例如，它不会自动返回最后一个表达�
 	zeroptr(&i)
     fmt.Println("zeroptr:", i)
 
-<br>
-###结构体
+
+## 结构体
 > 结构体 是各个字段字段的类型的集合
 
  person 结构体包含了 name 和 age 两个字段
@@ -314,10 +313,9 @@ Go 需要明确的返回值，例如，它不会自动返回最后一个表达�
  	sp := &s
     fmt.Println(sp.age)
 
-**结构体是可变的**
+## 结构体是可变的
 
 	sp.age = 51
     fmt.Println(sp.age)
 
-<br>
-###在结构体类型中定义`方法`
+## 在结构体类型中定义`方法`
