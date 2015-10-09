@@ -13,7 +13,7 @@ tags: [discuz]
 
 找到代码
 
-```php
+```
 function adminbase() {
                 parent::__construct();
                 $this->cookie_status = 0;
@@ -23,7 +23,7 @@ function adminbase() {
 
 修改为
 
-```php
+```
 function adminbase() {
                 parent::__construct();
                 $this->cookie_status = isset($_COOKIE['sid']) ? 1 : 0;
