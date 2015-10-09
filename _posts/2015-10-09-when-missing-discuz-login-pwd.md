@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Discuz!X3.2 升级后ucenter、uc_server密码正确无法登录后台的解决方法"
+title: "Discuz!X3.2 升级后无法登录后台的解决方法"
 description: "相信有很多人刚升级到discuz x3.2最新版本后都出现了ucenter和uc_server后台无法登录的问题其实根本不是密码不对，就是最新版本的discuz出现的BUG导致我们无法登录。"
 category: 技术
 tags: [discuz]
