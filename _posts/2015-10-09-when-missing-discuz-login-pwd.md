@@ -12,6 +12,7 @@ tags: [discuz]
 在/uc_server/model 中找到admin.php
 
 找到代码
+
 ```php
 function adminbase() {
                 parent::__construct();
@@ -21,6 +22,7 @@ function adminbase() {
 ```
 
 修改为
+
 ```php
 function adminbase() {
                 parent::__construct();
