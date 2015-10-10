@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "knockout的一些有用的例子和资源"
-description: ""
-category: 
-tags: []
+description: "knockout的一些有用的例子和资源"
+category: 技术
+tags: [knockout]
 ---
 #### [knockout-postbox 消息收发工具](https://github.com/rniemeyer/knockout-postbox/blob/master/README.md )
 
