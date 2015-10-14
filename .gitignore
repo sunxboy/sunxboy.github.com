@@ -1,5 +1,5 @@
 _site/*
-_theme_packages/*
+exclude/images/*
 
 Thumbs.db
 .DS_Store
@@ -8,3 +8,8 @@ Thumbs.db
 
 .rbenv-version
 .rvmrc
+node_modules/
+
+
+#!/assets/images/
+#/assets/images/*
