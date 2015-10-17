@@ -5,11 +5,10 @@ Thumbs.db
 .DS_Store
 
 !.gitkeep
-
+.sass-cache
+qrsync.exe
+qiniu
+qiniu.json
 .rbenv-version
 .rvmrc
 node_modules/
-
-
-#!/assets/images/
-#/assets/images/*

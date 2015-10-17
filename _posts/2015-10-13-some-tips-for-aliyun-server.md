@@ -57,19 +57,19 @@ yum是rpm的管理工具，管理一个软件库，可以很好的解决依赖�
 
 ## 使用客户端 SecureCRT 或 XShell 登录服务器
 
-![客户端 登录](/assets/images/tips_aliyun/client_login.png)
+![客户端 登录]({{ site.qiniu_url }}/images/tips_aliyun/client_login.png)
 
 **使用SecureCRT时，修改默认风格和样式**`-> Session Options -> `
   
-![样式](/assets/images/tips_aliyun/secureCRT_style.png)
+![样式]({{ site.qiniu_url }}/images/tips_aliyun/secureCRT_style.png)
 
 修改成 Xterm 样式
 
-![Xterm](/assets/images/tips_aliyun/xterm_style.png)
+![Xterm]({{ site.qiniu_url }}/images/tips_aliyun/xterm_style.png)
   
 然后修改字体为11
 
-![字体](/assets/images/tips_aliyun/sesstion_font.png)
+![字体]({{ site.qiniu_url }}/images/tips_aliyun/sesstion_font.png)
 
 进入系统后，运行 `df -h`**查看磁盘空间**
   

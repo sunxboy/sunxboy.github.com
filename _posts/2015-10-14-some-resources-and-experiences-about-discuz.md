@@ -74,7 +74,7 @@ admincp\admincp_checktools.php
 
 不同的站点对安全级别的要求不同，Discuz! 允许站点管理者，通过自定义配置文件中的 config.inc.php 中的论坛安全设置来自由调整站点的安全级别，同时也可以增强论坛的安全性能和防御性能。
 
-![安全设置](/assets/images/discuz-tips/security-1.gif)
+![安全设置]({{ site.qiniu_url }}/images/discuz-tips/security-1.gif)
 
 上图是 Discuz! 默认安装后，config 文件的默认设置，如果管理员需要更改此安全设置，可以在论坛目录下，找到 config 文件后打开，修改后保存即可。编辑配置文件时可使用记事本或其他编程软件。
 下面对此处关系到论坛安全设置的选项加以说明：
@@ -107,16 +107,16 @@ admincp\admincp_checktools.php
 是否允许在线编辑论坛模板 1=是 0=否[安全]
 默认为 0，当设置为 1 时，管理员可以在 **管理中心** => **界面** => **模板管理** => **相应模板的详情** 中看到“编辑”、“删除”的字样，否则只可以看到“查看”的字样，即不允许在线编辑模板。一般情况下，不建议将此项设置成允许在线编辑，把模板文件复制出来后再进行编辑，可以保证原模板文件的完整性，对于修改不当后产生的页面错误问题可以得到及时的恢复。
 
-![discuz 模板](/assets/images/discuz-tips/security-2.gif)
+![discuz 模板]({{ site.qiniu_url }}/images/discuz-tips/security-2.gif)
 
 - `$admincp['runquery'] = 1;`
 是否允许后台运行 SQL 语句 1=是 0=否[安全]
 默认为 1，即管理员可以在 管理中心 => 工具 => 数据库 => 升级 中看到可输入自定义 SQL 语句的文本框，当修改为 0 时，此文本框不显示，只能在后台运行程序内置的 SQL 语句。当允许运行 SQL 语句时，除非保证语句完全正确，否则不要轻易运行，并且运行 SQL 语句前，一定要做好备份，否则运行不当，造成数据丢失或数据库损坏，后果十分严重。
 
-![数据库](/assets/images/discuz-tips/security-3.gif)
+![数据库]({{ site.qiniu_url }}/images/discuz-tips/security-3.gif)
 
 - `$admincp['dbimport'] = 1;`
 是否允许后台恢复论坛数据 1=是 0=否[安全]
 默认为 1，即允许管理员在 **管理中心** => **工具** => **数据库** => **恢复** 中恢复数据，当修改为0时，选择此项后，会出现不允许恢复数据的提示。当确定了要恢复的备份文件是最新的，正确的之后，再允许恢复数据，可以有效地防止恢复错误的备份导致论坛数据丢失的情况。
 
-![备份](/assets/images/discuz-tips/security-4.gif)
+![备份]({{ site.qiniu_url }}/images/discuz-tips/security-4.gif)

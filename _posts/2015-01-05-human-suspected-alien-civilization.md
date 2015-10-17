@@ -11,7 +11,7 @@ tags: [外星人]
 
 ## 1，玻利维亚的蒂亚瓦纳科遗址
 
-![玻利维亚的蒂亚瓦纳科遗址](/assets/images/human-suspected-alien-civilization/boliweiyadediyawanakeyizhi.jpg)
+![玻利维亚的蒂亚瓦纳科遗址]({{ site.qiniu_url }}/images/human-suspected-alien-civilization/boliweiyadediyawanakeyizhi.jpg)
 
 位于玻利维亚而且也因蒂亚瓦纳科文明而闻名。这个地方引起人类好奇的主要原因是由于它接近17,000年的历史事实。人们相信某些奇特的技术被用在了这个不复存在的遗址上。尽管这样，但在当时这个地方被用作宗教仪式的中心诸如此类的作用是非常清楚的。同样明显的是它在过去也是那个地区的文化中心。让人困惑的是这样的建筑如何能够保持完整.
 
@@ -19,44 +19,44 @@ tags: [外星人]
 
 ## 2，哥斯大黎加的石球遗址
 
-<img src="/assets/images/human-suspected-alien-civilization/geshidalijiadeshiqiuyizhi.jpg" width="600" height="450">
+<img src="{{ site.qiniu_url }}/images/human-suspected-alien-civilization/geshidalijiadeshiqiuyizhi.jpg" width="600" height="450">
 
 是地球上另外一个最神秘的地方之一，它也引发了众多的猜测。就技术方面而言，这是众多发现中最神秘的。奇怪的石球随意摆放的现象自从20世纪30年代就开始存在，而且当时也被报道过。它们的尺寸从小到大而且直径范围从几厘米到两米都有。用于制作这些石球的岩石(一些石球重达16吨，这些人工制品相当的令人惊奇)是一种名为花岗闪长岩的火成岩。
 
 
 ## 3，秘鲁的马丘比丘古城
 
-<img src="/assets/images/human-suspected-alien-civilization/binudemaqiubiqiugucheng.jpg" width="600" height="450">
+<img src="{{ site.qiniu_url }}/images/human-suspected-alien-civilization/binudemaqiubiqiugucheng.jpg" width="600" height="450">
 
 对于印加帝国的城市而言，秘鲁的马丘比丘古城是已知保存最好并且得到了细心的关照，它也是世界各地旅行团所关注的焦点。它曾一度被人们所遗忘，而在某种程度上是在1911年被一位名为海勒姆．宾汉姆的考古学家再次发现。经过现代考古技术分析，这座遗址大约建成于公元1450年并且事实上是印加统治者的一个庇护所。
 
 ## 4，埃及金字塔
 
-<img src="/assets/images/human-suspected-alien-civilization/aijijingzhita.jpg" width="600" height="450">
+<img src="{{ site.qiniu_url }}/images/human-suspected-alien-civilization/aijijingzhita.jpg" width="600" height="450">
 
 有那么一段时间埃及金字塔完全是众人注意的焦点。事实上它们被用于埋葬法老以及不是很出名的东西。这些不出名的东西包括历史年代、建筑方法学以及它们扮演的逻辑学象征。这就为这些金字塔增添了美丽和魅力。人们提出无数的理论来试图解释它们的神秘，但是没有理论能够完全解答而且每一个理论都有漏洞。
 
 ## 5，奇琴伊察遗址
 
-<img src="/assets/images/human-suspected-alien-civilization/qijingyichayizhi.jpg" width="600" height="450">
+<img src="{{ site.qiniu_url }}/images/human-suspected-alien-civilization/qijingyichayizhi.jpg" width="600" height="450">
 
 你还记得读过古老的玛雅文明因为预测了世界末日而闻名于世，而且据他们所说2012年世界末日会到来。奇琴伊察遗址是玛雅人建造的考古学遗址之一。在这个遗址上有几个巨大的岩石建筑而且其中更加著名的一个是库库尔干金字塔，另一个被称为武士神殿。最有趣的事情是在这些建筑物上有一个雨神的雕像，而且据说玛雅人过去常常在他们所拥有的某种宗教仪式中使用心脏并且放在雨神面前。奇琴伊察过去有着巨大的吸引力而且是由玛雅文明的伊查人建筑。
 
 ## 6，智利的复活节岛
 
-<img src="/assets/images/human-suspected-alien-civilization/zhilidefuhuojiedao.jpg" width="600" height="450">
+<img src="{{ site.qiniu_url }}/images/human-suspected-alien-civilization/zhilidefuhuojiedao.jpg" width="600" height="450">
 
 这个地方让智利以其现存的巨石阵而闻名于世。据人们推测，这些被称为摩艾的石雕像是岛上古老祭拜仪式的一部分。它们制成于公元1250年至1500年间。这些石制雕像中重量最重的大约有86吨。
 
 ## 7，秘鲁的纳斯卡线
 
-<img src="/assets/images/human-suspected-alien-civilization/binudenashikaxian.jpg" width="600" height="450">
+<img src="{{ site.qiniu_url }}/images/human-suspected-alien-civilization/binudenashikaxian.jpg" width="600" height="450">
 
 许多人都听说过秘鲁纳斯卡线，它们是世界上最著名的神秘之地。事实上也有许多人在质疑这样庞大的线是如何刻到了地球的表面，因为它们肯定不像是一个普通人类能够完成的事情。纳斯卡线是世界上最庞大也是最不同寻常的化石遗迹之一。它恰巧位于彭巴草原沙漠中而且大约有300个图案是用直线刻画在沙漠中的。迄今为止到过那里的所有游客对于这些线的存在都给出了各种各样的解释，包含了奥林匹克运动会、宇航员、外星人以及流行艺术，但是任何解释都无法完全解答这个值得见证的景象。
 
 
 ## 8，巨石阵
 
-<img src="/assets/images/human-suspected-alien-civilization/jushizhen.jpg" width="600" height="450">
+<img src="{{ site.qiniu_url }}/images/human-suspected-alien-civilization/jushizhen.jpg" width="600" height="450">
 
 位于英格兰的维尔特郡的附近。它建成于公元前2500年，这就使它被改造的相当古老而且经历了一次又一次的改造。没人了解它存在的目的，但是它却是一处最著名的史前历史遗迹.

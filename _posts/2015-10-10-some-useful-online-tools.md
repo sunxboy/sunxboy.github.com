@@ -3,7 +3,7 @@ layout: post
 title: "一些有用的在线工具网站资源"
 description: "一些有用的在线工具网站资源"
 category: 技术
-tags: [工具]
+tags: [资源]
 ---
 
 ### 查找js包，有点类似于findjars.com

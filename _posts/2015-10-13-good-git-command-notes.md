@@ -69,3 +69,75 @@ tags: [git]
 > 如果`git pull`提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令`git branch --set-upstream branch-name origin/branch-name`
 
 这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+### 当git add -A后，如何恢复add的操作?
+
+	git reset
+	
+### 当添加新的ignore 后，如何将远程ignore的文件（夹）删除？
+
+	git rm -r --cached some-directory
+	git commit -m 'Remove the now ignored directory "some-directory"'
+	git push origin master
+
+### 当git commit 后，如何恢复commit的操作？
+
+	git log
+	
+```
+commit a867b4af366350be2e7c21b8de9cc6504678a61b`
+Author: Me <me@me.com>
+Date:   Thu Nov 4 18:59:41 2010 -0400
+
+blah blah blah...
+
+commit 25eee4caef46ae64aa08e8ab3f988bc917ee1ce4
+Author: Me <me@me.com>
+Date:   Thu Nov 4 05:13:39 2010 -0400
+
+more blah blah blah...
+
+commit 0766c053c0ea2035e90f504928f8df3c9363b8bd
+Author: Me <me@me.com>
+Date:   Thu Nov 4 00:55:06 2010 -0400
+
+And yet more blah blah...
+
+commit 0d1d7fc32e5a947fbd92ee598033d85bfc445a50
+Author: Me <me@me.com>
+Date:   Wed Nov 3 23:56:08 2010 -0400
+
+Yep, more blah blah.
+```
+
+然后
+
+	git checkout 0d1d7fc32
+	
+可参考： <http://stackoverflow.com/questions/4114095/revert-to-a-previous-git-commit >
+
+
+### Git 克隆指定分支(master)
+```
+git clone git@github.com:name/app.git -b master
+```
+
+### Git 切换到其它分支(develop)
+```
+git checkout develop
+```
+
+### Git 删除分支(myfeature)
+```
+git branch -d myfeature
+```
+
+### Git 删除远程分支
+```
+git push origin :branchName
+```
+
+### Git 将新分支推送到远程服务器
+```
+git push -u origin mynewfeature
+```

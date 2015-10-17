@@ -9,11 +9,11 @@ tags: [knockout]
 
 	yo ko
 	
-![创建工程](/assets/images/yo_ko/yo_ko.png)
+![创建工程]({{ site.qiniu_url }}/images/yo_ko/yo_ko.png)
 
 项目结构为
 
-![项目结构](/assets/images/yo_ko/yo_ko_structure.png)
+![项目结构]({{ site.qiniu_url }}/images/yo_ko/yo_ko_structure.png)
 
 ### 创建组件：
 

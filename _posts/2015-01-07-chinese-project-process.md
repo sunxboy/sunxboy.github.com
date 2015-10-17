@@ -7,5 +7,5 @@ tags: [Development]
 ---
 
 
-<img class="img-center" src="/assets/images/chinese-project-process/chinese-project-process.jpg">
+<img class="img-center" src="{{ site.qiniu_url }}/images/chinese-project-process/chinese-project-process.jpg">
 <!--break-->
