@@ -47,6 +47,11 @@ netstat -lntu
 -p = name of the program
 ```
 
+### 检查linux 系统发行版本
+
+	uname -a
+	uname -mrs
+
 ### 写全局变量：
 
 	echo "export PATH=/usr/share/java/bin:\$PATH" >> /etc/profile
