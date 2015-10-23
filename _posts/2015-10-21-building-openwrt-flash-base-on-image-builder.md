@@ -91,3 +91,12 @@ NBG6716:
 ### 将生成的镜像刷入到路由中
 
 	sftp: get bin/xxxxxxx.img 
+	
+### check non-root failed解决方法
+
+找到文件 `include/prereq-build.mk `
+
+```
+define Require/non-root
+    #[ "$$(shell whoami)" != "root" ]  <-----注释掉此行即可
+```

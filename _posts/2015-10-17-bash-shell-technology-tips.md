@@ -76,6 +76,24 @@ jamvm -verbose[:class|gc|jni]
    :jni print out native method dynamic resolution
 ```
 
+### 查看资源消耗前10的进程
+
+	ps aux|head -1;ps aux|grep -v PID|sort -rn -k +3|head
+
+STAT: 该行程的状态，linux的进程有5种状态：
+
++ D 不可中断 uninterruptible sleep (usually IO)
++ R 运行 runnable (on run queue)
++ S 中断 sleeping
++ T 停止 traced or stopped
++ Z 僵死 a defunct (”zombie”) process
+
+注: 其它状态还包括W(`无驻留页`), <(`高优先级进程`), N(`低优先级进程`), L(`内存锁页`).
+ 
++ START: 行程开始时间
++ TIME: 执行的时间
++ COMMAND:所执行的指令
+
 ### 检查远程端口是否对bash开放：
 ```
 echo >/dev/tcp/8.8.8.8/53 && echo "open"
@@ -89,6 +107,11 @@ Ctrl + z
 ### 将进程转到前台：
 ```
 fg
+```
+
+### 查找合适版本的某个软件
+```
+apt-cache --names-only search xxxx
 ```
 
 ### 产生随机的十六进制数，其中n是字符数
