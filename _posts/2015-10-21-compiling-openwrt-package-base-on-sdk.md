@@ -6,7 +6,7 @@ category: 技术
 tags: [openwrt]
 ---
 
-### 下载合适的image builder 
+### 下载合适的image SDK
 
 从网站<https://downloads.openwrt.org/snapshots/trunk/ar71xx/nand/>
 文件名： **OpenWrt-SDK-ar71xx-nand_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64.tar.bz2**
