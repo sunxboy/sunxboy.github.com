@@ -8,6 +8,7 @@ Thumbs.db
 .sass-cache
 qrsync.exe
 qiniu
+upload
 qiniu.json
 .rbenv-version
 .rvmrc
