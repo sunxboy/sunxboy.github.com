@@ -37,20 +37,17 @@ echo %JAVA_HOME%
 ### 下载 FishEye
 从Atlassian 网站下载 [Download FishEye](https://www.atlassian.com/software/fisheye/download)
 解压下载的文件到安装路径:
-FishEye安装路径不能含有空格. 在这个说明中用 <FishEye home directory> 表示
+FishEye安装路径不能含有空格. 在这个说明中用 `FishEye home directory`表示
 如果你希望大量用户使用这个FishEye, 并且 FishEye 将使用 connected to an external database, 请考虑将 FishEye 安装到数据库服务器不同的服务器中，以提高性能
 
 ### 设置 FishEye 数据存储路径
-<FishEye instance directory> 是 FishEye 数据存储路径
-<div class="alert alert-warning">
-你不能把 <FishEye instance directory> 放到 <FishEye home directory> 里面 — 而应该是完全独立的两个文件夹. 如果你将  i<FishEye instance directory> 放到 <FishEye home directory> 里，那么当FishEye升级时，<FishEye instance directory> 路径将会被覆盖, 数据将会丢失. 另外, 如果你运行多个FishEye，你也应该分别设置多个<FishEye instance directory>。
-</div>
-创建 <FishEye instance directory>, 并通过FISHEYE_INST环境变量来告知 <FishEye instance directory>文件夹的绝对路径，具体操作如下:
+
+创建  FishEye 数据存储路径, 并通过FISHEYE_INST环境变量来告知  FishEye 数据存储路径文件夹的绝对路径，具体操作如下:
 **对于 Windows 7:**
 + 点击 开始 菜单, 搜索 "sys env" 并选择 编辑系统环境变量.
 + 点击 环境变量 按钮, 然后点击 新建  
-+ 变量名称输入 "FISHEYE_INST" , 变量值输入<FishEye instance directory> 的绝对路径，最后不要输入反斜线.
-+ 然后复制 <FishEye home directory> /config.xml 文件到<FishEye instance directory> 目录。.
++ 变量名称输入 "FISHEYE_INST" , 变量值输入 FishEye 数据存储路径 的绝对路径，最后不要输入反斜线.
++ 然后复制 `FishEye home directory` /config.xml 文件到 FishEye 数据存储路径 目录。.
 
 注意，如果FishEye作为Windows 服务启动，需要使用 Java Service Wrapper, FishEye 指定的环境变量，如 FISHEYE_INST 将被忽略 – 你必须在 wrapper.conf 文件中重新设置. 请参考 将FishEye作为Windows服务
 <div class="alert alert-warning">
@@ -58,7 +55,7 @@ FishEye安装路径不能含有空格. 在这个说明中用 <FishEye home direc
 </div>
 
 ### 启动 FishEye!
-在命令窗口, 切换到 <FishEye home directory> 目录，并运行下面的代码:
+在命令窗口, 切换到 `FishEye home directory` 目录，并运行下面的代码:
 ```
 bin\start.bat
 ```
