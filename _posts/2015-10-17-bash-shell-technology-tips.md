@@ -440,3 +440,28 @@ find . -type f -exec egrep -l $'\t' {} \;
 ```
 printf '%100s\n' | tr ' ' =
 ```
+
+### 查看IP 地址
+```
+ifconfig
+```
+
+### 更新jar包中的文件
+```
+jar vfu /d/dev/xxx.jar org/apache/hadoop/hbase/filter/
+```
+
+### scp的使用
+```
+scp local_file remote_user@host:remote_folder
+```
+
+### sqlplus的使用
+```
+sqlplus
+```
+
+### 执行SQL
+```
+@path.sql
+```
