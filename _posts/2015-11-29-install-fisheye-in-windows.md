@@ -14,13 +14,16 @@ Atlassian 仅支持在 x86 硬件或 运行在x86硬件上派生的64位
 ### 检查Java版本
 
 通过命令行检查
+
 ```
 java -version
 ```
+
 Java版本必须为 1.6.0 或更高版本. 如果你希望 将FishEye作为Windows服务, 请使用 Java Service Wrapper, 你需要使用 32位Java (即使运行在64位服务器上), 并且最好使用 JDK 而不是 JRE ( 因为可以使用 -server 等参数).
  
 ### 检查 Windows 是否能定位到 Java 
-Windows 使用 JAVA_HOME 环境变量来定位 Java. 要检查这个变量，可以使用命令行:
+Windows 使用 JAVA_HOME 环境变量来定位 Java. 要检查这个变量，可以使用命令行
+
 ```
 echo %JAVA_HOME%
 ```
@@ -50,15 +53,19 @@ FishEye安装路径不能含有空格. 在这个说明中用 `FishEye home direc
 + 然后复制 `FishEye home directory` /config.xml 文件到 FishEye 数据存储路径 目录。.
 
 注意，如果FishEye作为Windows 服务启动，需要使用 Java Service Wrapper, FishEye 指定的环境变量，如 FISHEYE_INST 将被忽略 – 你必须在 wrapper.conf 文件中重新设置. 请参考 将FishEye作为Windows服务
+
 <div class="alert alert-warning">
 如果你使用大量的源代码库, 我们建议你加大FishEye默认允许打开的文件数量值.
 </div>
 
 ### 启动 FishEye!
-在命令窗口, 切换到 `FishEye home directory` 目录，并运行下面的代码:
+
+在命令窗口, 切换到 `FishEye home directory` 目录，并运行下面的代码
+
 ```
 bin\start.bat
 ```
+
 几分钟后, 打开浏览器, 前往 http://localhost:8060/ (或者 http://hostname:8060/, hostname 即安装FishEye的机器名称).
 输入授权码, 以及管理员密码, 并完成配置步骤. 注意，这里的密码指的是FishEye '内置' 的管理员. 你可以用这个用户登录, 如果有必要, 点击页面底部的 Administration 链接进入管理员界面.
 你也可以等配置完成后，再将JIRA与FishEye集成;
@@ -78,7 +85,9 @@ FishEye 会对你添加的源代码库进行索引. 如果你正在试用 FishEy
 当然如果你正在试用 FishEye, 你也可以直接使用内置 HSQL 数据库, 日后可以方便的迁移。
 
 ### 停止 FishEye (可选)
-打开命令窗口, 切换到 <FishEye home directory> 目录，并运行:
+
+打开命令窗口, 切换到 <FishEye home directory> 目录，并运行
+
 ```
 bin\stop.bat
 ```
