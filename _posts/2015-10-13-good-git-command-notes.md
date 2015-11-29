@@ -141,3 +141,18 @@ git push origin :branchName
 ```
 git push -u origin mynewfeature
 ```
+
+### git比较本地与远程代码
+Don't do a `pull` :
+
+> do a `fetch` (the syntax is the same as `git pull`, but it doesn't automatically merge)
+> do a `diff` between your dest branch and the other branch
+> do a `merge` if you want
+
+### 显示git注释细节
+
+	git show <commit-id>
+
+	git log -p
+
+	git log --pretty=format:"%h %s" --graph

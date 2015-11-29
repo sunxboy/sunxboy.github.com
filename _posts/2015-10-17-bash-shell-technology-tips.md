@@ -458,10 +458,10 @@ scp local_file remote_user@host:remote_folder
 
 ### sqlplus的使用
 ```
-sqlplus
+sqlplus user/pass@local_SID
 ```
 
-### 执行SQL
+### sqlplus下执行SQL
 ```
-@path.sql
+sqlplus> @path.sql
 ```
