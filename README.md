@@ -1,7 +1,7 @@
 ## jekyll serve --watch
 
 ## images link
-![xxxxxx]({{ site.qiniu_url }}/images/xxxxx.png)
+![xxxxxx]({{ site.qiniu_url }}/xxxxx.png)
 
 ## add images into qiniu clouds
 rake qrsync

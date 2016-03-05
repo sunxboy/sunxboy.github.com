@@ -258,15 +258,35 @@ watch ps -ef
 ### 所有用户列表
 ```
 getent passwd
-Mount root in read/write mode:
+```
 
+### 挂载磁盘（读写模式） 
+```
 mount -o remount,rw /
+```
+
+### 挂载光盘到指定目录
+```
+mount -o loop /dev/sr0 /mnt
+mount -r -t auto /dev/sr0 /mnt
 ```
 
 ### 挂载一个目录（这是不能使用链接的情况）
 ```
 mount --bind /source /destination
 ```
+
+### 使用挂载目录创建yum本地库
+```
+mount -o loop /path/to/iso /mnt
+vi /etc/yum.repos.d/centosdvdiso.repo
+```
+>[centosdvdiso]
+name=CentOS DVD ISO
+baseurl=file:///mnt
+enabled=1
+gpgcheck=0
+gpgkey=file:///mnt/RPM-GPG-KEY-CentOS-6
 
 ### 动态更新DNS server
 ```
@@ -279,6 +299,11 @@ EOF
 ### 递归grep所有目录
 ```
 grep -r "some_text" /path/to/dir
+```
+
+### grep递归查询目录下指定文件后缀内容
+```
+grep -R --include="*.txt" "foo" ~/projects/
 ```
 
 ### 列出前10个最大的文件
@@ -464,4 +489,33 @@ sqlplus user/pass@local_SID
 ### sqlplus下执行SQL
 ```
 sqlplus> @path.sql
+```
+
+### chown赋权文件的所有者
+```
+chown hadoop:hadoop datafolder
+```
+
+### 关闭linux防火墙
+```
+systemctl stop firewalld
+systemctl disable firewalld
+```
+
+### 手动修改linux系统时间
+```
+datetimectl
+datetimectl set-time 2015-11-13
+datetimectl set-time 14:15:30
+```
+
+### linux下json parser工具
+<https://stedolan.github.io/jq/>
+
+### bash shell 写文件
+```
+cat << EOF > /tmp/yourfilehere
+These contents will be written to the file.
+        This line is indented.
+EOF
 ```
