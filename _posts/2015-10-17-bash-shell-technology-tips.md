@@ -288,6 +288,11 @@ enabled=1
 gpgcheck=0
 gpgkey=file:///mnt/RPM-GPG-KEY-CentOS-6
 
+### 在yum库中搜索指定软件并列出不同的版本
+```
+yum --showduplicates list xxxx | expand
+```
+
 ### 动态更新DNS server
 ```
 nsupdate < <EOF
