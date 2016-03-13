@@ -471,9 +471,13 @@ find . -type f -exec egrep -l $'\t' {} \;
 printf '%100s\n' | tr ' ' =
 ```
 
-### 查看IP 地址
+### 关于IP的一些用法
 ```
-ifconfig
+ip addr or just ip a
+ip link set dev <interface> up/down
+ip addr add <ip>/<masklen> dev <interface>
+ip route or just ip r
+ip r add <net>/<netmasklen> via <gateway>
 ```
 
 ### 更新jar包中的文件
