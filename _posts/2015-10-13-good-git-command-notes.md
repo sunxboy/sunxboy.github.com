@@ -156,3 +156,20 @@ Don't do a `pull` :
 	git log -p
 
 	git log --pretty=format:"%h %s" --graph
+
+### `git commit` 多行消息
+```
+git commit -m "this is
+> a line
+> with new lines
+> maybe"
+```
+
+### git中文编码支持
+```
+echo "export LESSCHARSET=utf-8" > $HOME/.profile
+git config --global gui.encoding utf-8
+git config --global i18n.commitencoding utf-8
+git config --global i18n.logoutputencoding gbk
+```
+

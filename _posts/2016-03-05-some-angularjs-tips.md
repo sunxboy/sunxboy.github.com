@@ -20,3 +20,12 @@ function callAtTimeout() {
     console.log("Timeout occurred");
 }
 ```
+
+### 在angular中`extend` javascript object
+
+```Javascript
+angular.extend($scope.logEntry, {
+    stationId : log.stationId,
+    serverType : log.serverType
+});
+```

@@ -3,7 +3,7 @@ layout: post
 title: "java写代码的一些小技巧"
 description: "java 技巧"
 category: 技术
-tags: [java]
+tags: [java,weblogic]
 ---
 
 ### 罗列并过滤目录下特定文件名
@@ -149,4 +149,21 @@ public class StationControllerTest extends AbstractJUnit4SpringContextTests
 		</util:map>
 	</constructor-arg>
 </bean>
+```
+
+### weblogic 检查状态
+```
+java -cp C:\ Oracle\Middleware\wlserver_10.3\server\lib\weblogic.jar   weblogic.Admin -adminurl localhost:7001 -username weblogic -password weblogic1 GETSTATE
+```
+
+### spring mvc 的request mapping中路径包含 `.` 的解析
+
+```
+@RequestMapping("/openLog/{stationId}/{serverType}/{logName:.+}")
+```
+
+### GBK 编码
+
+```
+Charset.forName("GBK") 
 ```
