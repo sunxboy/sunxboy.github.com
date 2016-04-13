@@ -528,3 +528,12 @@ These contents will be written to the file.
         This line is indented.
 EOF
 ```
+
+### shell下 逐行读取文件
+```
+touch hbase-fix.sh
+cat a.txt | \
+while read line; do
+  echo "hadoop fs -rmr "$line >> hbase-fix.sh
+done
+```

@@ -120,3 +120,32 @@ sudo docker run -d -p 443:443  -e REGISTRY_HOST="docker-registry" -e REGISTRY_PO
 		这里使用了一个镜像去创建nginx容器，如果我们利用独立的nginx去进行配置的话，要求nginx版本在1.7.5以上才能支持nginx.conf中add_header等配置。如果是作为内网使用，建议采用nginx容器这种方式就行。如果允许让外网访问，建议先拷贝docker-registry-proxy容器中nginx.conf配置的内容，然后根据实际情况调整upstream中相关ip,docker-registry.key,docker-registry.htpasswd等文件存放的位置。注意这块nginx.conf配置的server非常重要，需要配置为之前提到的域名或别名。
 </div>
 
+### docker 基本概念
+
+* ENV  指定一个环节变量，会被后续 RUN 指令使用，并在容器运行时保留
+
+```
+ENV <key> <value>       # 只能设置一个变量
+ENV <key>=<value> ...   # 允许一次设置多个变量
+```
+
+* ENTRYPOINT   配置容器启动后执行的命令，并且不可被 docker run 提供的参数覆盖，而 CMD 是可以被覆盖的。如果需要覆盖，则可以使用 docker run --entrypoint 选项。
+每个 Dockerfile 中只能有一个 ENTRYPOINT，当指定多个时，只有最后一个生效。
+
+```
+ENTRYPOINT [“executable”, “param1”, “param2”] (the preferred exec form，优先选择)
+ENTRYPOINT command param1 param2 (shell form)
+```
+
+* VOLUME  创建一个可以从本地主机或其他容器挂载的挂载点
+
+```
+VOLUME ["/data"]
+```
+
+* WORKDIR  为后续的 RUN、CMD、ENTRYPOINT 指令配置工作目录。可以使用多个 WORKDIR 指令，后续命令如果参数是相对路径，则会基于之前命令指定的路径。
+
+```
+WORKDIR /path/to/workdir
+```
+
