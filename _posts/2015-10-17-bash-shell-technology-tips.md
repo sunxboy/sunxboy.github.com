@@ -537,3 +537,45 @@ while read line; do
   echo "hadoop fs -rmr "$line >> hbase-fix.sh
 done
 ```
+
+### 查内核版本
+
+```
+uname -r
+```
+
+### 更改centos 6.2上的系统时间和timezone
+
+```
+[root@centos6 ~]# date 010611272012
+Fri Jan  6 11:27:00 MYT 2012
+
+less /etc/sysconfig/clock
+
+use tzselect or ln -s /usr/share/zoneinfo/xxxx   /etc/localtime
+```
+
+### 同步局域网中各台机器的系统时间
+例如 ntp server为192.168.0.1
+
+* 登录192.168.0.2
+* 先执行同步  ntpdate 192.168.0.1
+* vi /etc/ntp.conf，添加 server 192.168.0.1
+* 启动
+
+```
+/etc/rc.d/init.d/ntpd start
+service ntpd start
+```
+
+* chkconfig ntpd on 
+* 查看 ntpq -p 或  ps -ef|grep ntp
+如何确认我们的NTP服务器已经更新了自己的时间呢？
+
+```
+[root@linux ~] # ntpstat
+```
+
+最后提及一点，ntp服务，默认只会同步系统时间。如果想要让ntp同时同步硬件时间，可以设置/etc/sysconfig/ntpd 文件。
+
+在/etc/sysconfig/ntpd文件中，添加 `SYNC_HWCLOCK=yes` 这样，就可以让硬件时间与系统时间一起同步

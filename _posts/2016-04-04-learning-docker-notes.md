@@ -6,6 +6,12 @@ category: 技术
 tags: [docker]
 ---
 
+## Docker 国内镜像
+
+```
+containerops.cn/docker/registry
+```
+
 ## update docker machine hosts scripts
 ```
 #!/usr/bin/env bash
@@ -149,3 +155,65 @@ VOLUME ["/data"]
 WORKDIR /path/to/workdir
 ```
 
+### 用docker 给镜像打上tag
+
+```
+docker tag 5db5f8471261 ouruser/sinatra:devel
+docker tag tianon/centos localhost:5000/pip/centos
+```
+
+再 push
+
+```
+docker push localhost:5000/pip/centos
+```
+
+### Run ngnix locally
+
+```
+docker pull nginx
+docker run -d -p 8080:80 ngnix
+get vm ip address by " docker-machine ls"
+http://host-ip:8080
+```
+
+### 如何启用  docker ssh
+
+```
+yum install openssh-server openssh-clients
+service sshd start
+chkconfig sshd on
+ssh localhost
+user: docker
+pass: tcuser
+```
+
+### 搭建私有库步骤
+
+```
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+docker pull ubuntu && docker tag ubuntu localhost:5000/ubuntu
+docker push localhost:5000/ubuntu
+docker pull localhost:5000/ubuntu
+```
+
+### 外部存储的registry
+
+```
+docker run -d -p 5000:5000 --restart=always --name registry \
+  -v `pwd`/data:/var/lib/registry \
+  registry:2
+```
+
+### 配置 docker register
+
+```
+(systemctl show docker | grep EnvironmentFile 
+ systemctl status docker | grep Loaded)
+vi /etc/default/docker
+DOCKER_OPTS="--insecure-registry pip-dev:5000 --dns 8.8.8.8 --dns 192.168.0.1"
+
+vi /usr/lib/systemd/system/docker.service
+add 
+EnvironmentFile=-/etc/default/docker
+```

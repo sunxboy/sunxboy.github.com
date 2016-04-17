@@ -101,3 +101,120 @@ docker images
 ```
 docker push [image_name]
 ```
+
+### 列出正在使用的虚拟机
+
+```
+"C:\Program Files\Docker Toolbox\docker-machine" ls
+```
+
+### 创建一个新的虚拟机
+
+```
+docker-machine create --driver virtualbox my-default
+```
+
+### 创建新的虚拟机
+
+```
+docker-machine create pipbox --driver virtualbox --engine-insecure-registry 192.168.0.131:5000
+```
+
+### 查看虚拟机配置参数
+
+```
+docker-machine env --shell cmd my-default
+```
+
+### Delete all docker containers
+
+```
+docker rm $(docker ps -a -q)
+```
+
+### Delete all docker images
+
+```
+docker rmi $(docker images -q)
+```
+
+### 检视 docker container
+
+```
+docker inspect container_id
+```
+
+### docker 删除images
+
+```
+docker rmi xxxxxxxxx(image id)
+```
+
+### 通过指定的register mirror生成virtual box 虚拟机
+
+```
+$ docker-machine create -d virtualbox  \
+> --engine-registry-mirror=http://c309bf7f.m.daocloud.io \
+> --virtualbox-hostonly-cidr 192.168.0.20/29 \
+> pipbox
+
+eval "$(docker-machine env pipbox)"
+```
+
+### 显示容器ip
+
+```
+docker-machine ip pipbox
+```
+
+### 在容器中运行nginx
+
+```
+docker run -d -p 8000:80 nginx
+```
+
+### 开始与关闭容器
+
+```
+$ docker-machine stop dev
+$ docker-machine start dev
+```
+
+### 给容器重新生成证书
+
+```
+docker-machine regenerate-certs  pipbox
+```
+
+### 切换到pipbox容器
+
+```
+docker-machine env pipbox
+```
+
+### Set Up a Registry Server
+
+```
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+docker run -p 5000:5000 registry
+
+docker-machine create --driver virtualbox --engine-insecure-registry myregistry:5000 dev
+
+docker run myregistry:5000/busybox:latest echo 'hello world'
+```
+
+### Search Private Registry
+
+```
+http://registry.example.com:5000/v1/search?q=rhel
+```
+
+
+### Remove Old Docker Containers
+
+```
+docker rm `docker ps --no-trunc -a -q`
+```
+
+<http://tashan10.com/yong-dockerda-jian-hadoopwei-fen-bu-shi-ji-qun/>

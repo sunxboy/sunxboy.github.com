@@ -13,3 +13,9 @@ tags: [windows]
 ### windows下的bash工具
 `Babun`
 <http://babun.github.io/>
+
+### ｗｉｎｄｏｗｓ端口转发
+
+```
+netsh 
+```

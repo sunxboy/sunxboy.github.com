@@ -167,3 +167,84 @@ java -cp C:\ Oracle\Middleware\wlserver_10.3\server\lib\weblogic.jar   weblogic.
 ```
 Charset.forName("GBK") 
 ```
+
+### 多线程并发eventbus
+
+```
+private final EventBus sendEvent = new AsyncEventBus("send", Executors.newFixedThreadPool(4));
+    @Subscribe
+    @AllowConcurrentEvents
+    public void sendStringMessage(String message)
+    {
+        Result result = distirbution.newMessage(message);
+        if (result.issuccess())
+        {
+            sendLabel.setText(String.format(sendStatusFormat, sendTimes.get(), successTimes.incrementAndGet()));
+        }
+    }
+```
+
+### 随机生成指定范围大小的bytes数组
+
+```
+private byte[] createRandomBytesWithSpecifiedSize()
+        {
+            // Random sized file (from 1 MB to say 3 MB)
+            int min = 1024 * 1024 * 1;
+            int max = 1024 * 1024 * 3;
+            int size = new Random().nextInt(max - min + 1) + min;
+            byte[] bytes = new byte[size];
+            new Random().nextBytes(bytes);
+            return bytes;
+        }
+```
+
+### dubbo 单元测试
+
+export dubbo某一服务
+
+```
+   private <T> void exportServer(T server, int port)
+    {
+        ProviderConfig provider = new ProviderConfig();
+        ServiceConfig<T> service = new ServiceConfig<T>();
+        service.setProvider(provider);
+        service.setProtocol(new ProtocolConfig("dubbo", port));
+        service.setApplication(new ApplicationConfig("provider"));
+        service.setRegistry(new RegistryConfig(RegistryConfig.NO_AVAILABLE));
+        service.setInterface(server.getClass().getInterfaces()[0]);
+        service.setRef(server);
+        service.export();
+    }
+```
+
+### 并发执行并等待，有直接返回，至最大等待时间
+
+```
+private Boolean consoleOutputIsRunning(final Process process, int timeout)
+    {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        CompletionService<Boolean> completionService = new ExecutorCompletionService<Boolean>(executor);
+        completionService.submit(new Callable<Boolean>()
+        {
+            @Override
+            public Boolean call()
+                throws InterruptedException
+            {
+                if(xxxxx) {
+                    return true;
+                }
+        });
+        
+            Future<Boolean> resultFuture = completionService.poll(timeout, TimeUnit.SECONDS);
+            if (resultFuture != null)
+            {
+                Boolean result = resultFuture.get();
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+        return Boolean.FALSE;
+    }
+```

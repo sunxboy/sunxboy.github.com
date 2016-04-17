@@ -173,3 +173,15 @@ git config --global i18n.commitencoding utf-8
 git config --global i18n.logoutputencoding gbk
 ```
 
+### 删除某一文件
+
+```
+git rm .....xxxxxxx
+```
+
+### 应用stash变更
+
+···
+git stash apply
+···
+
