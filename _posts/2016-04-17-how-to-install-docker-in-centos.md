@@ -3,7 +3,7 @@ layout: post
 title: "如何的在centos中安装docker"
 description: "如何的在centos中安装docker"
 category: 技术
-tags: [centos docker]
+tags: [centos,docker]
 ---
 
 ### CentOS6

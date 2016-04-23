@@ -19,3 +19,9 @@ tags: [windows]
 ```
 netsh 
 ```
+
+### windows 下如何查看端口被占用
+
+```
+netstat -aon|findstr 8080
+```

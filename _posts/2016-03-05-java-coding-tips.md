@@ -248,3 +248,33 @@ private Boolean consoleOutputIsRunning(final Process process, int timeout)
         return Boolean.FALSE;
     }
 ```
+
+### spring jpa 中字段使用joda time
+
+```
+@Column(name = "DJRQ") // 登记日期
+@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+private LocalDate registrationDate;
+```
+
+### Spring 从属性文件中直接读取值
+
+```
+@Value("${highRisk.district.age.max}")
+private int maxLimitedAge;
+
+@Value("${highRisk.district.age.min}")
+private int minLimitedAge;
+
+@Value("#{'${highRisk.district.list}'.split(',')}")
+private List<String> highRiskDistricts;
+```
+
+### 当spring 中要用 @Value annotations 去拿值时需要在  config类（@Configuration）中添加以下方法
+
+```
+ @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
+```

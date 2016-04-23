@@ -579,3 +579,23 @@ service ntpd start
 最后提及一点，ntp服务，默认只会同步系统时间。如果想要让ntp同时同步硬件时间，可以设置/etc/sysconfig/ntpd 文件。
 
 在/etc/sysconfig/ntpd文件中，添加 `SYNC_HWCLOCK=yes` 这样，就可以让硬件时间与系统时间一起同步
+
+### 同步cmos时钟与系统时间
+
+```
+hwclock --systohc
+```
+
+This will set the hardware clock to the current system time. You can also do the inverse:
+
+```
+hwclock --hctosys
+```
+
+To display what date/time the hardware clock is currently set to:
+
+```
+hwclock --show
+```
+
+- See more at: <http://www.linux.com/learn/answers/view/712-linux-cmos-time-sync#sthash.dDEypXSj.dpuf>

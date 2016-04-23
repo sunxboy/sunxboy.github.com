@@ -38,3 +38,10 @@ do
 
 done < a.txt
 ```
+
+### 异常问题解决
+
+```
+hadoop fsck
+hbase hbck -fix
+```
