@@ -31,3 +31,55 @@ mvn deploy:deploy-file \
 * 注意查看各种repostory的配置中“部署策略”是否为允许
 
 ![xxxxxx]({{ site.qiniu_url }}/maven/maven_upload.jpg)
+
+
+
+### Maven 中添加profile并对属性文件进行操作
+
+```
+<profiles>
+      <profile>
+      <id>prod</id>
+      <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.8</version>
+            <executions>
+               <execution>
+                  <phase>compile</phase>
+                  <goals>
+                     <goal>run</goal>
+                  </goals>
+                  <configuration>
+                  <tasks>
+                     <echo>Using prod env properties</echo>
+            		 <copy file="src/main/resources/prod/primary_db.properties" tofile="${project.build.outputDirectory}/primary_db.properties" overwrite="true"/>
+            		 <copy file="src/main/resources/prod/badcase_db.properties" tofile="${project.build.outputDirectory}/badcase_db.properties" overwrite="true"/>
+                  </tasks>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+      </plugins>
+      </build>
+      </profile>
+   </profiles>
+```
+
+### tomcat maven plugin 热部署
+ 
+```
+<plugins>
+	<plugin>
+		<groupId>org.apache.tomcat.maven</groupId>
+		<artifactId>tomcat7-maven-plugin</artifactId>
+		<version>2.2</version>
+		<configuration>
+			<path>/myapp</path>
+			<contextReloadable>true</contextReloadable>
+		</configuration>
+	</plugin>
+</plugins>
+```

@@ -599,3 +599,15 @@ hwclock --show
 ```
 
 - See more at: <http://www.linux.com/learn/answers/view/712-linux-cmos-time-sync#sthash.dDEypXSj.dpuf>
+
+### 查看所有进程的文件打开数
+
+```
+    lsof |wc -l
+```
+
+### 查看某个进程打开的文件数
+
+```
+    lsof -p pid |wc -l
+```

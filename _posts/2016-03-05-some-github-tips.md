@@ -32,4 +32,3 @@ git remote remove origin
 mv .git/config.backup .git/config
 git fetch
 ```
-

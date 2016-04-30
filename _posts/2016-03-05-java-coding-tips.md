@@ -278,3 +278,113 @@ private List<String> highRiskDistricts;
         return new PropertySourcesPlaceholderConfigurer();
     }
 ```
+
+### 在spring test中使用spy
+
+```
+    @Spy
+    private XwallServiceImpl xwallService;
+
+    Mockito.doReturn(new Long(1)).when(xwallService).countDateZZRKRegistration(today);
+```
+
+### H2 Database 在测试中 添加方法 functions
+
+```
+public class Function {
+    public static int isMan(String value) {
+        return 1;
+    }
+}
+
+@Autowired
+private DataSource dataSource;
+
+@Before
+public void setup() throws Exception {
+	Connection conn = dataSource.getConnection();
+	Statement st = conn.createStatement();
+	st.execute("CREATE ALIAS IS_MAN FOR \"com.pip.xwall.Function.isMan\"");
+	st.close();
+	conn.close();
+}
+```
+
+### 测试中如何申明有序集合里各元素匹配
+
+```
+assertThat(newList, IsIterableContainingInOrder.<Number> contains(2L, 3L, 4L, 5L, 6L, 7L, 8L));
+```
+
+### spring data jpa 自动生成序列号
+
+```
+@Id
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="judgements_id_seq")
+@SequenceGenerator(name="judgements_id_seq", sequenceName="judgements_id_seq", allocationSize=1)
+@Column(name = "JUD_ID")
+private Long _judId;
+```
+
+### 使用POI 对excel进行读操作
+
+* 导入包
+
+```
+<dependency>
+	<groupId>org.apache.poi</groupId>
+	<artifactId>poi</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.apache.poi</groupId>
+	<artifactId>poi-excelant</artifactId>
+	<version>3.10.1</version>
+</dependency>
+<dependency>
+	<groupId>org.apache.poi</groupId>
+	<artifactId>poi-ooxml</artifactId>
+	<version>3.10.1</version>
+</dependency>
+```
+
+* 读操作
+
+```
+try {
+	Resource resource = new ClassPathResource("data/xwall-12-months.xlsx");
+	XSSFWorkbook workbook = new XSSFWorkbook(resource.getInputStream());
+	XSSFSheet sheet = workbook.getSheet("Sheet3");
+	Iterator<Row> rowIterator = sheet.rowIterator();
+	if (rowIterator.hasNext())
+		rowIterator.next();// zzrk
+	if (rowIterator.hasNext())
+		rowIterator.next();// column name
+	while (rowIterator.hasNext()) {
+		Row dataColumn = rowIterator.next();
+
+		if (dataColumn.getCell(zzrkCriminalDate) != null && dataColumn.getCell(zzrkCriminalValue) != null) {
+			dataColumn.getCell(zzrkCriminalValue).setCellType(Cell.CELL_TYPE_STRING);
+			zzrkExcelData.add(new ExcelData(ZZRK, dataColumn.getCell(zzrkCriminalDate).getDateCellValue(), CRIMINAL,
+					dataColumn.getCell(zzrkCriminalValue).getStringCellValue()));
+		}
+	}
+}
+catch (FileNotFoundException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+```
+
+### spring test中使 db transaction生效
+
+test 类 加上以下 标注：
+ 
+```
+@RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
+@TransactionConfiguration(transactionManager = "xxxxx", defaultRollback = true)
+```

@@ -62,3 +62,68 @@ select string2number('123.456789') from dual;
 ```
 create index idx_func on emp (UPPER(ename)) tablespace tablespace_name;
 ```
+
+### 查询当前用户的连接到的数据库名
+
+```
+SELECT ora_database_name FROM dual
+```
+
+### 表数据的导入与导出
+
+```
+exp deinonychus/lcxd123@ORCL_PIPTEST file=pip_code_area.dmp tables=CODE_AREA rows=y indexes=n triggers=n grants=n
+
+imp system/xWall123456 file=d:\exp\pip_code_area.dmp log=code_area.log fromuser=deinonychus touser=unlogin buffer=64000 tables=CODE_AREA
+```
+
+### 基于 substr 建索引
+
+```
+CREATE INDEX my_substr_idx
+    ON my_table( substr( my_field,1,6 ) );
+```
+
+### 索引重建
+
+```
+ANALYZE INDEX index_name COMPUTE STATISTICS 
+ANALYZE INDEX index_name VALIDATE STRUCTURE 
+ALTER INDEX index_name REBUILD
+```
+
+### oracle 设置密码不过期
+
+```
+select profile from DBA_USERS where username = '<username>';
+alter profile <profile_name> limit password_life_time UNLIMITED;
+```
+
+### oracle中插入记录时，自增列自动增长
+
+* 建表
+
+```
+CREATE TABLE departments (
+  ID           NUMBER(10)    NOT NULL,
+  DESCRIPTION  VARCHAR2(50)  NOT NULL);
+
+ALTER TABLE departments ADD (
+  CONSTRAINT dept_pk PRIMARY KEY (ID));
+
+CREATE SEQUENCE dept_seq;
+```
+
+* 建触发器
+
+```
+CREATE OR REPLACE TRIGGER dept_bir 
+BEFORE INSERT ON departments 
+FOR EACH ROW
+
+BEGIN
+  SELECT dept_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+```

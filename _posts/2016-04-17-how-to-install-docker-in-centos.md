@@ -29,3 +29,14 @@ $ sudo yum install docker
 $ sudo service docker start
 $ sudo chkconfig docker on
 ```
+
+### centos7中安装docker 1.1.2
+
+```
+curl -fsSL https://get.docker.com/ | sh
+
+rpm --import "https://sks-keyservers.net/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e"
+yum install -y yum-utils
+
+yum-config-manager --add-repo https://packages.docker.com/1.10/yum/repo/main/centos/7
+```

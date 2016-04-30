@@ -45,3 +45,21 @@ done < a.txt
 hadoop fsck
 hbase hbck -fix
 ```
+
+### org.apache.hadoop.hdfs.server.namenode.LeaseExpiredException): No lease o 异常解决
+
+> 原因：
+mapred.task.timeout设置时间过短，如上日志，在600秒左右任务状态没有任何变化，hadoop将该任务kill，并清理临时目录，后续遍找不到临时数据了。
+
+修改参数 
+
+```
+<property> 
+<name>mapred.task.timeout</name> 
+<value>600000</value> 
+<description>The number of milliseconds before a task will be 
+terminated if it neither reads an input, writes an output, nor 
+updates its status string. 
+</description> 
+mapred.task.timeout修改称1小时3600000即可。
+```

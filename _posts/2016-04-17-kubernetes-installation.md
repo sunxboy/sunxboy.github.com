@@ -3,7 +3,7 @@ layout: post
 title: "安装 Kubernetes"
 description: "安装 Kubernetes"
 category: 技术
-tags: [Kubernetes]
+tags: [kubernetes]
 ---
 
 ### 安装 docker (yum install docker-io)
